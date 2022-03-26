@@ -1,0 +1,16 @@
+@use "abstracts";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: abstracts.$font-family;
+  font-size: abstracts.$font-size;
+}
+
+h1 {
+  font-size: abstracts.$header-font-size;
+}

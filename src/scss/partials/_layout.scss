@@ -1,0 +1,129 @@
+@use "abstracts";
+
+:root {
+  --other-inputs-vertical-padding: 0;
+  --other-inputs-horizontal-padding: 0;
+  --number-pad-wrap: nowrap;
+}
+
+.ui {
+  width: 100%;
+  .grid {
+    width: 100%;
+    display: grid;
+    position: relative;
+
+    .board-wrap {
+      padding: 2em 0;
+
+      .board-area {
+        max-width: abstracts.$max-board-width;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        border: 1px solid black;
+
+        .board {
+          &.hidden {
+            visibility: hidden;
+          }
+
+          width: 100%;
+          display: grid;
+          grid-template-columns: repeat(9, 1fr);
+        }
+
+        .select-difficulty.hidden {
+          display: none;
+        }
+
+        .select-difficulty {
+          display: grid;
+          place-items: center;
+          grid-template-columns: 1fr 1fr;
+          padding: abstracts.$base-padding;
+          gap: 0.5em;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+
+          .resume-puzzle-container {
+            grid-column: span 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+
+        .overlay {
+          width: 100%;
+          background-color: lightgray;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+
+          &.hidden {
+            display: none;
+          }
+
+          .msg {
+            font-size: abstracts.$header-font-size;
+            font-weight: abstracts.$header-font-weight;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    .other-inputs {
+      width: 100%;
+      padding: var(--other-inputs-vertical-padding)
+        var(--other-inputs-horizontal-padding);
+
+      .number-pad {
+        display: flex;
+        flex-wrap: var(--number-pad-wrap);
+        justify-content: space-evenly;
+        align-items: center;
+        padding-bottom: abstracts.$base-padding;
+      }
+
+      .options-container {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        padding: abstracts.$base-padding 0;
+      }
+
+      .secondary-options-container {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding-bottom: abstracts.$base-padding;
+      }
+    }
+  }
+}
+
+@media (min-width: 42em) {
+  :root {
+    --other-inputs-vertical-padding: 3em;
+    --other-inputs-horizontal-padding: 2em;
+    --number-pad-wrap: wrap;
+  }
+
+  .ui {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}

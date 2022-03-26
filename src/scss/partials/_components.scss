@@ -1,0 +1,314 @@
+@use "abstracts";
+
+.header {
+  background-color: abstracts.$header-color;
+  padding: abstracts.$base-padding;
+
+  h1 {
+    font-size: abstracts.$header-font-size;
+    font-weight: abstracts.$header-font-weight;
+    padding-bottom: abstracts.$header-elements-padding;
+  }
+
+  .description {
+    padding-bottom: abstracts.$header-elements-padding;
+  }
+}
+
+.board.show-mistakes .cell.user-added.wrong {
+  color: red;
+}
+
+.cell {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  border: 1px solid black;
+  text-align: center;
+  font-size: abstracts.$header-font-size;
+  user-select: none;
+
+  &.notes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+    .note {
+      height: 0;
+      font-size: 0.5rem;
+      padding-bottom: 100%;
+
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3) {
+        margin-top: 15%;
+      }
+    }
+
+    .note-1 {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .note-2 {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .note-3 {
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+    .note-4 {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .note-5 {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    .note-6 {
+      grid-column: 3;
+      grid-row: 2;
+    }
+
+    .note-7 {
+      grid-column: 1;
+      grid-row: 3;
+    }
+
+    .note-8 {
+      grid-column: 2;
+      grid-row: 3;
+    }
+
+    .note-9 {
+      grid-column: 3;
+      grid-row: 3;
+    }
+  }
+
+  &.user-added {
+    color: #1500ff;
+  }
+
+  &.xx-top {
+    border-top: 4px solid black;
+  }
+
+  &.x-top {
+    border-top: 2px solid black;
+  }
+
+  &.xx-bottom {
+    border-bottom: 4px solid black;
+  }
+
+  &.x-bottom {
+    border-bottom: 2px solid black;
+  }
+
+  &.xx-left {
+    border-left: 4px solid black;
+  }
+
+  &.x-left {
+    border-left: 2px solid black;
+  }
+
+  &.xx-right {
+    border-right: 4px solid black;
+  }
+
+  &.x-right {
+    border-right: 2px solid black;
+  }
+
+  &.selected {
+    background-color: #17aeff;
+  }
+
+  &.same-value {
+    background-color: #78d0ff;
+  }
+
+  &.same-group {
+    background-color: #bae7ff;
+  }
+}
+
+.timer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0.25em;
+
+  .timer-display {
+    padding: 0 abstracts.$base-padding;
+  }
+
+  .pause {
+    width: 1.8em;
+    min-height: 1.8em;
+    border-radius: 50%;
+    border: none;
+    background-color: abstracts.$button-color;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
+.difficulty {
+  border-style: solid;
+  border-width: 4px;
+  border-radius: 1.5em;
+  padding: 0.8em;
+  cursor: pointer;
+  transition: background-color 0.1s;
+
+  .difficulty-name {
+    width: 100%;
+    text-align: center;
+    font-size: abstracts.$header-font-size;
+    font-weight: abstracts.$header-font-weight;
+  }
+
+  .difficulty-description {
+    width: 100%;
+  }
+}
+
+.difficulty-easy {
+  background-color: #adffb6;
+  border-color: #4fff61;
+
+  &:hover {
+    background-color: #4fff61;
+  }
+}
+
+.difficulty-medium {
+  background-color: #faffba;
+  border-color: #f4fc83;
+
+  &:hover {
+    background-color: #f4fc83;
+  }
+}
+
+.difficulty-hard {
+  background-color: #ffe6b8;
+  border-color: #ffc04a;
+
+  &:hover {
+    background-color: #ffc04a;
+  }
+}
+
+.difficulty-expert {
+  background-color: #ffa6a6;
+  border-color: #ff3d3d;
+
+  &:hover {
+    background-color: #ff3d3d;
+  }
+}
+
+.number-selection {
+  background-color: abstracts.$button-color;
+  padding: 1em 0;
+  width: 8vw;
+  font-weight: 600;
+  text-align: center;
+  border: 2px solid abstracts.$button-hover-color;
+  transition: background-color 0.1s ease-in-out;
+
+  &:hover {
+    background-color: abstracts.$button-hover-color;
+    cursor: pointer;
+  }
+}
+
+.option {
+  width: 3em;
+  display: flex;
+  flex-direction: column;
+  .option-btn {
+    width: 3em;
+    min-height: 3em;
+    background-color: abstracts.$button-color;
+    border: 2px solid abstracts.$button-hover-color;
+    border-radius: 0.5em;
+    transition: background-color 0.1s ease-in-out;
+
+    &.on {
+      background-color: abstracts.$setting-on-color !important;
+      border-color: abstracts.$settting-on-border;
+
+      &:hover {
+        background-color: abstracts.$settting-on-border !important;
+      }
+    }
+
+    &:hover {
+      background-color: abstracts.$button-hover-color;
+      cursor: pointer;
+    }
+  }
+
+  .option-label {
+    font-size: 0.75rem;
+    text-align: center;
+  }
+}
+
+.secondary-option {
+  width: 10em;
+  min-height: 5em;
+  font-weight: 600;
+  transition: background-color 0.1s;
+  border-radius: 1em;
+  cursor: pointer;
+
+  &.new-game {
+    background-color: abstracts.$start-new-game-color;
+    border: 2px solid abstracts.$start-new-game-border;
+
+    &:hover {
+      background-color: abstracts.$start-new-game-border;
+    }
+  }
+
+  &.solve-for-me {
+    background-color: abstracts.$solve-for-me-color;
+    border: 2px solid abstracts.$solve-for-me-border;
+
+    &:hover {
+      background-color: abstracts.$solve-for-me-border;
+    }
+  }
+}
+
+.solved-msg {
+  text-align: center;
+  font-size: 2rem;
+  color: black;
+  display: none;
+
+  &.show {
+    display: block;
+  }
+}
+
+@media (min-width: 42em) {
+  .number-selection {
+    width: 30%;
+    min-height: 3em;
+    line-height: 3em;
+    margin: 1.5%;
+  }
+}
